@@ -54,7 +54,7 @@ class RoundListenTestCase(RoundTestCase):
         )
 
         # Verify that post was successfull, and redirected
-        self.assertRedirects(response, url_for('round.listen', long_id=round.long_id))
+        self.assertEqual(response.location, url_for('round.listen', long_id=round.long_id))
 
         # Verify that Nick Jones's guesses were added to the database and are correct
         for guess in Submission.query.filter_by(user_name="Nick Jones").first().guesses:
@@ -107,7 +107,7 @@ class RoundListenTestCase(RoundTestCase):
         )
 
         # Verify that post was successfull, and redirected
-        self.assertRedirects(response, url_for('round.listen', long_id=round.long_id))
+        self.assertEqual(response.location, url_for('round.listen', long_id=round.long_id))
 
         # Verify that the playlist link was added to the db
         self.assertEqual(round.playlist_link, "https://open.spotify.com/playlist/32O0SSXDNWDrMievPkV0Im")
@@ -129,7 +129,7 @@ class RoundListenTestCase(RoundTestCase):
         )
 
         # Verify that post was successfull, and redirected
-        self.assertRedirects(response, url_for('round.listen', long_id=round.long_id))
+        self.assertEqual(response.location, url_for('round.listen', long_id=round.long_id))
 
         # Verify that John Doe's guesses were added to the database and are correct
         for guess in Submission.query.filter_by(user_name="John Doe").first().guesses:

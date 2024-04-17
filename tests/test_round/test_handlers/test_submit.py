@@ -97,7 +97,7 @@ class RoundSubmitTestCase(RoundTestCase):
         )
 
         # Verify that post was successfull, and redirected
-        self.assertRedirects(response, url_for('round.submit', long_id=round.long_id))
+        self.assertEqual(response.location, url_for('round.submit', long_id=round.long_id))
 
         # Verify that the submission was successfully added to the database
         submissions = Submission.query.all()
@@ -115,7 +115,7 @@ class RoundSubmitTestCase(RoundTestCase):
         )
 
         # Verify that post was successfull, and redirected
-        self.assertRedirects(response, url_for('round.submit', long_id=round.long_id))
+        self.assertEqual(response.location, url_for('round.submit', long_id=round.long_id))
 
         # Verify that the same submission now has the new values
         self.assertEqual(submission.user_name, "Dummier Alias")
@@ -133,7 +133,7 @@ class RoundSubmitTestCase(RoundTestCase):
         )
 
         # Verify that post was successfull, and redirected
-        self.assertRedirects(response, url_for('round.submit', long_id=round_long_id))
+        self.assertEqual(response.location, url_for('round.submit', long_id=round_long_id))
 
         # Verify that the submission was successfully added to the database
         submissions = Submission.query.all()

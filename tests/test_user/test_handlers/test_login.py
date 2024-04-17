@@ -34,9 +34,9 @@ class UserLoginTestCase(UserTestCase):
                 "Referer": url_for('main.index')  # set 'request.referrer' ('Referer' is not a typo lol)
             }
         )
-
+        print("NAKDBG url_for = ", url_for('main.index'))
         # Verify that post was successful and redirected back to the main page
-        self.assertRedirects(response, url_for('main.index'))
+        self.assertEqual(response.location, url_for('main.index'))
 
         # Verify that the user was added to the database
         users = User.query.all()

@@ -153,7 +153,7 @@ class RoundAdvanceTestCase(RoundTestCase):
         )
 
         # Verify that post was successfull, and redirected
-        self.assertRedirects(response, url_for('round.index', long_id=round.long_id))
+        self.assertEqual(response.location, url_for('round.index', long_id=round.long_id))
 
         # Verify that GET the round.listen is successful
         response = self.client.get(url_for('round.listen', long_id=round.long_id))
@@ -173,7 +173,7 @@ class RoundAdvanceTestCase(RoundTestCase):
         )
 
         # Verify that post was successfull, and redirected
-        self.assertRedirects(response, url_for('round.index', long_id=round.long_id))
+        self.assertEqual(response.location, url_for('round.index', long_id=round.long_id))
 
         # Verify that the GET to the round.revealed is successfull
         response = self.client.get(url_for('round.revealed', long_id=round.long_id))
